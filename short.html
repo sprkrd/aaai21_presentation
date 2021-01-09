@@ -1,0 +1,381 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Online Action Recognition</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+
+    <!-- Theme used for syntax highlighted code -->
+    <!--<link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css" id="highlight-theme">-->
+
+    <link rel="stylesheet" href="custom-style.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section data-markdown="content-short.md"
+                 data-separator="^\r?\n>>>\r?\n$"
+                 data-separator-vertical="^\r?\nvvv\r?\n$">
+        </section>
+
+        <!--<section class="front-page">-->
+          <!--<h1>Online Action Recognition</h1>-->
+
+          <!--<hr/>-->
+
+          <!--<ul class="authors">-->
+            <!--<li>-->
+              <!--<div class="author">-->
+                <!--<span class="name">Alejandro Suárez-Hernández<sup>1</sup></span>-->
+                <!--<span class="email">asuarez@iri.upc.edu</span>-->
+              <!--</div>-->
+            <!--</li>-->
+
+            <!--<li>-->
+              <!--<div class="author">-->
+                <!--<span class="name">Javier Segovia-Aguas<sup>1,2</sup></span>-->
+                <!--<span class="email">javier.segovia@upf.edu</span>-->
+              <!--</div>-->
+            <!--</li>-->
+
+            <!--<li>-->
+              <!--<div class="author">-->
+                <!--<span class="name">Carme Torras<sup>1</sup></span>-->
+                <!--<span class="email">torras@iri.upc.edu</span>-->
+              <!--</div>-->
+            <!--</li>-->
+
+            <!--<li>-->
+              <!--<div class="author">-->
+                <!--<span class="name">Guillem Alenyà<sup>1</sup></span>-->
+                <!--<span class="email">galenya@iri.upc.edu</span>-->
+              <!--</div>-->
+            <!--</li>-->
+          <!--</ul>-->
+
+          <!--<ol class="affiliations">-->
+            <!--<li>Institut de Robòtica i Informàtica Industrial</li>-->
+            <!--<li>Universitat Pompeu Fabra</li>-->
+          <!--</ol>-->
+
+          <!--<div class="conference">-->
+            <!--<p class="venue">35th AAAI conference on Artificial Intelligence</p>-->
+            <!--<p class="date">Feb 2-9, 2021</p>-->
+          <!--</div>-->
+
+          <!--<div class="logos">-->
+            <!--<div>-->
+              <!--<img src="assets/logos/IRI_logo.svg"/>-->
+            <!--</div>-->
+            <!--<div>-->
+              <!--<img src="assets/logos/UPF_logo.svg"/>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</section>-->
+
+        <!--<section>-->
+          <!--<h2></h2>-->
+          <!--<img src="img/sokoban_animation.gif"/>-->
+        <!--</section>-->
+
+        <!--<section>-->
+          <!--<figure>-->
+            <!--<div class="annotated-figure" style="--rows: 8; --cols: 8;">-->
+              <!--<div class="item" style="--row: 1; --col: 2; --height: 7; --width: 7;">-->
+                <!--<img src="img/sokoban_static.gif" width="100%"/>-->
+              <!--</div>-->
+              <!--<div class="item highlight centered-content fragment" style="--row: 2; --col: 4; --width: 8; --height: 2">hello</div>-->
+              <!--<div class="item annotation centered-content fragment" style="--row: 6; --col: 6; --width: 2; --height: 2">hello</div>-->
+
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 1; --col: 1;">1</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 2; --col: 1;">2</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 3; --col: 1;">3</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 4; --col: 1;">4</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 5; --col: 1;">5</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 6; --col: 1;">6</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 7; --col: 1;">7</div>-->
+
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 2;">A</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 3;">B</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 4;">C</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 5;">D</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 6;">E</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 7;">F</div>-->
+              <!--<div class="item centered fragment" data-fragment-index="0" style="--row: 8; --col: 8;">G</div>-->
+            <!--</div>-->
+            <!--<figcaption>Hey, a nice caption :D</figcaption>-->
+          <!--</figure>-->
+        <!--</section>-->
+
+        <!--<section>-->
+          <!--<div class="algorithm", style="font-size: 0.5em;">-->
+            <!--<p class="caption">OARU</p>-->
+            <!--<p><em>Input:</em> Observation $ o = (s,s') $, action library $ \mathcal{A} $</p>-->
+            <!--<p><em>Output:</em> Grounded action $ a' $ s.t. $  s \xrightarrow{a'} s' $</p>-->
+            <!--<div class="algorithmic">-->
+              <!--<p class="line fragment highlight-current-red">$ a \leftarrow $ <span class="function">BuildTGA</span>($ s, s' $)</p>-->
+              <!--<p class="line">$ \alpha \leftarrow \emptyset, \alpha' \leftarrow \emptyset, d_\mathit{min} \leftarrow \infty $</p>-->
+              <!--<p class="line"><em>for all</em> $ \beta \in \mathcal{A} $ <em>do</em></p>-->
+              <!--<div class="nested-block">-->
+                <!--<p class="line">$(\alpha_u, \mathit{dist}_{\beta,a}) \leftarrow $ <span class="function">ActionUnification</span>($ \beta, a $)</p>-->
+                <!--<p class="line"><em>if</em> $ \mathit{dist}_{\beta,a} \lt d_\mathit{min} $ <em>then</em></p>-->
+                <!--<div class="nested-block">-->
+                  <!--<p class="line">$ \alpha \leftarrow \beta, \alpha' \leftarrow \alpha_u, d_\mathit{min} \leftarrow \mathit{dist}_{\beta,a} $</p>-->
+                <!--</div>-->
+                <!--<p class="line"><em>end if</em></p>-->
+              <!--</div>-->
+              <!--<p class="line"><em>end for</em></p>-->
+              <!--<p class="line"><em>if</em> $ \alpha' \ne \emptyset $ <em>then</em></p>-->
+              <!--<div class="nested-block">-->
+                <!--<p class="line">Remove $ \alpha $ from $ \mathcal{A} $</p>-->
+                <!--<p class="line">$ a' \leftarrow \alpha' \sigma  $ s.t. $ \mathit{eff}_{\alpha'\sigma} = \mathit{eff}_a $</p>-->
+                <!--<p class="line">Add $ \alpha' $ to $ \mathcal{A} $</p>-->
+              <!--</div>-->
+              <!--<p class="line"><em>else</em></p>-->
+              <!--<div class="nested-block">-->
+                <!--<p class="line">$ a' \leftarrow a $</p>-->
+                <!--<p class="line">Add $ a $ to $ \mathcal{A} $</p>-->
+              <!--</div>-->
+              <!--<p class="line"><em>end if</em></p>-->
+              <!--<p class="line"><em>return</em> $ a' $</p>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</section>-->
+
+        <!--<section>-->
+          <!--<h2>Time for some Maths</h2>-->
+          <!--Hello \( a^2 + b^2 = c^2 \)-->
+          <!--\[ a^2 + b^2 = c^2 \]-->
+        <!--</section>-->
+        <!--<section>-->
+        <!--<pre><code data-trim data-noescape>-->
+<!--(def lazy-fib-->
+  <!--(concat-->
+   <!--[0 1]-->
+   <!--((fn rfib [a b]-->
+        <!--(lazy-cons (+ a b) (rfib b (+ a b)))) 0 1)))-->
+  <!--</code></pre>-->
+        <!--</section>-->
+
+        <!--<section>-->
+          <!--<section>Vertical slide 1</section>-->
+          <!--<section>Vertical slide 2</section>-->
+        <!--</section>-->
+        <!--<section data-state="make-it-pop">Slide 2</section>-->
+        <!--<section data-markdown data-separator="^\r?\n---\r?\n$">-->
+          <!--<textarea data-template>-->
+            <!--## Slide x-->
+            <!--![IRI logo](assets/logos/IRI_logo.svg)-->
+            <!--Bla bla bla [link](http://hakim.se)-->
+
+            <!--$$ \mathcal{A} = \emptyset $$-->
+
+            <!------->
+
+            <!--## Slide y-->
+            <!--Bla bla bla-->
+
+            <!------->
+
+            <!--## Slide z-->
+            <!--Bla blegh Blagh-->
+          <!--</textarea>-->
+        <!--</section>-->
+        <!--<section data-markdown="example.md"-->
+                 <!--data-separator="^\r?\n>>>\r?\n$"-->
+                 <!--data-separator-vertical="^\r?\nvvv\r?\n$">-->
+        <!--</section>-->
+        <!--<section data-markdown>-->
+          <!--<script type="text/template">-->
+            <!--[> .slide: data-background="#ff0000" <]-->
+            <!--- Item 1 [> .element: class="fragment" data-fragment-index="2" <]-->
+            <!--- Item 2 [> .element: class="fragment" data-fragment-index="1" <]-->
+          <!--</script>-->
+        <!--</section>-->
+        <!--<section data-auto-animate>-->
+          <!--<div data-id="box" style="height: 50px; background: salmon;"></div>-->
+        <!--</section>-->
+        <!--<section data-auto-animate>-->
+          <!--<div data-id="box" style="height: 200px; background: blue;"></div>-->
+        <!--</section>-->
+        <!--<section>-->
+          <!--<div class="r-stack">-->
+            <!--<img class="fragment current-visible" data-fragment-index="1" src="https://placekitten.com/450/300" width="450" height="300">-->
+            <!--<img class="fragment current-visible" data-fragment-index="2" src="https://placekitten.com/300/450" width="300" height="450">-->
+            <!--<img class="fragment" src="https://placekitten.com/400/400" width="400" height="400">-->
+          <!--</div>-->
+        <!--</section>-->
+        <!--<section>-->
+          <!--<p class="fragment">Fade in</p>-->
+          <!--<p class="fragment semi-fade-in-semi-fade-out">Fade out</p>-->
+          <!--<p class="fragment highlight-current-red">Highlight red</p>-->
+          <!--<p class="fragment semi-fade-in-semi-fade-out">Fade in, then out</p>-->
+          <!--<p class="fragment fade-up">Slide up while fading in</p>-->
+        <!--</section>-->
+        <!--<section>-->
+          <!--<div class="r-hstack">-->
+            <!--<div><h1>Hello</h1></div>-->
+            <!--<div><h1>Bye</h1><p>How are you?</p></div>-->
+          <!--</div>-->
+        <!--</section>-->
+        <!--<section data-auto-animate>-->
+          <!--<img width="256px" src="assets/blocks/trans0/prev.png"/>-->
+        <!--</section>-->
+        <!--<section data-auto-animate>-->
+          <!--<img width="256px" src="assets/blocks/trans0/prev.png"/>-->
+          <!--<p>vvv</p>-->
+          <!--<img width="256px" src="assets/blocks/trans0/next.png"/>-->
+        <!--</section>-->
+        <!--<section data-auto-animate>-->
+          <!--<img width="256px" src="assets/blocks/trans0/next.png"/>-->
+          <!--<p>vvv</p>-->
+          <!--<img width="256px" src="assets/blocks/trans1/next.png"/>-->
+        <!--</section>-->
+        <!--<section data-auto-animate class="delayed-fragment">-->
+          <!--<h1>Implicit</h1>-->
+          <!--<h1 class="fragment">vvv</h1>-->
+          <!--<h1>Animation</h1>-->
+        <!--</section>-->
+        <!--<section data-auto-animate class="delayed-fragment">-->
+          <!--<h1 class="fragment">vvv</h1>-->
+          <!--<h1>Again!</h1>-->
+        <!--</section>-->
+      </div>
+      <div class="frame bottom"></div>
+      <div class="frame top"></div>
+      <div class="frame left"></div>
+      <div class="frame right"></div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/plugin/math/math.js"></script>
+
+    <!-- D3 Graphviz -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js" type="javascript/worker"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        slideNumber: "c/t",
+        margin: 0.08,
+        width: 1200,
+        controls: false,
+        keyboard: {
+          84: renderGraph
+        },
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/gh/mathjax/mathjax@2.7.8/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+        },
+        // Learn about plugins: https://revealjs.com/plugins/
+        //plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath ]
+        plugins: [ RevealMarkdown, RevealNotes, RevealMath ]
+      })
+      .then( () => {
+        var headerNumber = [0,0,0,0,0,0],
+            headers = document.querySelectorAll("h1.numbered-section, h2.numbered-section, h3.numbered-section, h4.numbered-section, h5.numbered-section, h6.numbered-section")
+        for (var h of headers) {
+          var level = Number(h.tagName[1]) - 1;
+          if (!h.classList.contains("dont-increment")) {
+            ++headerNumber[level];
+            for (var inner_level = level+1; inner_level < 6; ++inner_level)
+              headerNumber[inner_level] = 0;
+          }
+          var spanElement = document.createElement("SPAN");
+          var spanText = document.createTextNode(headerNumber.slice(1,level+1).join(".")+". ");
+          spanElement.classList.add("numeral");
+          spanElement.appendChild(spanText);
+          h.insertBefore(spanElement, h.firstChild);
+        }
+      })
+      .then( () => {
+        
+        /*prepare_graph_animation("transition0", 0);
+        prepare_graph_animation("transition1", 0, 1);
+        prepare_graph_animation("transition2", 1, 2);
+        prepare_graph_animation("transition3", 2, 3);
+        prepare_graph_animation("transition4", 3, 4);*/
+        prepare_graph_animation("transition0", 0);
+        prepare_graph_animation("transition1", 1);
+        prepare_graph_animation("transition2", 2);
+        prepare_graph_animation("transition3", 3);
+        prepare_graph_animation("transition4", 4);
+        
+      });
+
+      async function load_content(url, callback) {
+        response = await fetch(url);
+        if (response.ok) {
+          responseText = await response.text();
+          callback(responseText);
+        }
+        else
+          throw Error("Cannot fetch " + url +
+                      ", ok: " + response.ok +
+                      ", status: " + response.status);
+      }
+
+      var graph_array = [];
+      var animation_index = {};
+
+      async function get_graph(m) {
+        if (graph_array[m] === undefined)
+          await load_content(`img/sokoban_transitions/trans${m}/g.gv`,
+            graphText => { graph_array[m] = graphText; });
+        return graph_array[m];
+      }
+
+      function renderGraph() {
+        var g = Reveal.getCurrentSlide().querySelector(".graph");
+        if (g) {
+          var graphviz = animation_index[g.id];
+          var t = d3.transition().ease(d3.easeLinear).duration(1000);
+          graphviz.transition(t).render();
+        }
+      }
+
+      async function prepare_graph_animation(id,m,n) {
+        var graph_m = await get_graph(m);
+        var graph_n;
+        if (n !== undefined)
+          graph_n = await get_graph(n);
+        var graphviz = d3.select("#"+id)
+                         .graphviz()
+                         .convertEqualSidedPolygons(false)
+                         .tweenShapes(false)
+                         .zoom(false)
+                         .fit(true)
+                         .width(500)
+                         .height(600)
+                         .on("initEnd", () => {
+                           graphviz.renderDot(graph_m)
+                           if (graph_n !== undefined) {
+                             graphviz.dot(graph_n);
+                           }
+                         } );
+        animation_index[id] = graphviz;
+      }
+      //prepare_graph_animation("transition1",0);
+
+      //Reveal.addEventListener("slidechanged", function(event) {
+      //  if (event.currentSlide.classList.contains("delayed-fragment")) {
+      //    setTimeout(function() { Reveal.nextFragment(); }, 1000);
+      //  }
+      //});
+    </script>
+  </body>
+</html>

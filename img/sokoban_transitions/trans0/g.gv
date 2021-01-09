@@ -1,0 +1,10 @@
+graph g {
+	fontname=Arial
+	rankdir=LR
+	node [fontcolor=black fontname=Arial margin=0 shape=none]
+	subgraph cluster_actionlib {
+		label=<<b>Action library</b>> rank=same
+		"action-1" [label=<<table color="#008000" style="rounded" border="4" cellborder="0" cellspacing="4" cellpadding="3"><tr><td style="rounded" align="center" bgcolor="#008000"><font color="white"><b>action-1</b></font></td></tr><tr><td valign="top" align="left" balign="left"><b>params:</b><br/></td></tr><tr><td valign="top" align="left" balign="left"><b>pre:</b><br/>at(player-01,pos-6-3),<br/>clear(pos-6-2),<br/>is-nongoal(pos-6-2),<br/>is-nongoal(pos-6-3),<br/>is-player(player-01),<br/>location(pos-6-2),<br/>location(pos-6-3),<br/>move-dir(pos-6-2,pos-6-3,dir-down),<br/>move-dir(pos-6-3,pos-6-2,dir-up),<br/>thing(player-01)</td></tr><tr><td valign="top" align="left" balign="left"><b>add:</b><br/>at(player-01,pos-6-2),<br/>clear(pos-6-3)</td></tr><tr><td valign="top" align="left" balign="left"><b>del:</b><br/>at(player-01,pos-6-3),<br/>clear(pos-6-2)</td></tr></table>>]
+	}
+	node [fontcolor=white fontname=Arial margin=0 penwidth=0 shape=none]
+}
