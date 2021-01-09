@@ -1,0 +1,496 @@
+:root {
+  --theme-color: #b01220;
+  --slide-frame-size: 3vmin;
+}
+
+.make-it-pop {
+  filter: drop-shadow(0 0 10px purple);
+}
+
+/*.reveal .slides section .fragment.highlight-current-red.current-fragment {*/
+  /*color: #17ff2e;*/
+/*}*/
+
+.reveal .fragment.semi-fade-in-out {
+  opacity: 0.3;
+  visibility: inherit;
+}
+
+.reveal .fragment.semi-fade-in-out.current-fragment {
+  opacity: 1;
+}
+
+.reveal h1 {
+  font-size: 70px;
+  text-transform: none;
+  font-variant-caps: small-caps;
+}
+
+.reveal h2 {
+  font-size: 2em;
+  text-transform: none;
+}
+
+.reveal h3 {
+  font-size: 1.5em;
+  text-transform: none;
+}
+
+.reveal h2 span.numeral {
+  color: var(--theme-color);
+}
+
+.reveal p.highlight {
+  color: white;
+  background-color: var(--theme-color);
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.reveal figure > img {
+  margin: 0;
+}
+
+.reveal figure > figcaption {
+  font-style: italic;
+}
+
+.reveal figure > figcaption > small {
+  display: block;
+  font-size: 0.5em;
+}
+
+.reveal .box {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px;
+  text-align: left;
+}
+
+.reveal .box > .header {
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  background: black;
+  margin: 0;
+  text-align: center;
+}
+
+.reveal .spaced-horizontally {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.down-arrow {
+  color: var(--theme-color);
+}
+
+div.down-arrow::before {
+  content: "\2193"
+}
+
+div.right-arrow {
+  color: var(--theme-color);
+}
+
+div.right-arrow::before {
+  content: "\279C";
+}
+
+/*.annotated-figure {*/
+  /*--rows: 3;*/
+  /*--cols: 3;*/
+  /*margin: 20px 0;*/
+  /*font-size: 11pt;*/
+  /*[>background: yellow;<]*/
+  /*display: inline-grid;*/
+  /*grid-template-columns: [init] repeat(var(--cols),1fr) [end];*/
+  /*grid-template-rows: [init] repeat(var(--rows),1fr) [end];*/
+/*}*/
+
+/*.annotated-figure img {*/
+  /*margin: 0;*/
+  /*max-width: none;*/
+  /*max-height: none;*/
+/*}*/
+
+/*.annotated-figure > .item {*/
+  /*--row: 1;*/
+  /*--col: 1;*/
+  /*--width: 1;*/
+  /*--height: 1;*/
+  /*--end-row: calc(var(--row) + var(--height));*/
+  /*--end-col: calc(var(--col) + var(--width));*/
+  /*grid-row: var(--row) / var(--end-row);*/
+  /*grid-column: var(--col) / var(--end-col);*/
+  /*z-index: 1;*/
+/*}*/
+
+/*.annotated-figure > .item.centered {*/
+  /*align-self: center;*/
+  /*justify-self: center;*/
+/*}*/
+
+/*.annotated-figure > .item.centered-content {*/
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+/*}*/
+
+div.grid {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  gap: 10px 10px;
+}
+
+span.nobr {
+  white-space: nowrap;
+}
+
+/********************
+ * DECORATIONS
+ ********************/
+
+.frame {
+  z-index: 9;
+  content: "";
+  position: fixed;
+  background: var(--theme-color);
+}
+
+.frame.bottom {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: var(--slide-frame-size);
+}
+
+.frame.left {
+  left: 0;
+  top: 0;
+  width: var(--slide-frame-size);
+  height: 100%;
+}
+
+.frame.right {
+  right: 0;
+  top: 0;
+  width: var(--slide-frame-size);
+  height: 100%;
+}
+
+.frame.top {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--slide-frame-size);
+}
+
+.reveal hr {
+  color: var(--theme-color);
+}
+
+/********************
+ * FRONT PAGE
+ ********************/
+
+.front-page {
+  font-size: 25px;
+}
+
+.front-page ul.authors {
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  list-style: none;
+  line-height: 1;
+}
+
+.front-page ul.authors > li {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.front-page ul.authors > li::after {
+  font-weight: 1;
+  content: ", ";
+}
+
+.front-page ul.authors > li:last-child::after {
+  content: "";
+}
+
+.front-page ul.authors li:nth-last-child(2)::after {
+  content: " and ";
+}
+
+.front-page ul.authors > li .author {
+  display: inline-block;
+  vertical-align: text-top;
+  margin-bottom: 10px;
+}
+
+.front-page ul.authors > li > .author > .name {
+  display: block;
+}
+
+.front-page ul.authors > li > .author > .email {
+  display: block;
+  padding-top: 10px;
+  font-size: 0.5em;
+  font-weight: 1;
+  font-family: var(--code-font);
+}
+
+.front-page ul.authors > li > .author > .email::before {
+  content: "\1F4E7";
+  /*
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url(assets/icons/email.svg);
+  background-size: cover;
+  */
+  margin-right: 5px;
+}
+
+.front-page ol.affiliations {
+  display: block;
+  margin: 20px;
+  text-align: center;
+  counter-reset: affiliation;
+  list-style: none;
+}
+
+.front-page ol.affiliations li {
+  counter-increment: affiliation;
+}
+
+.front-page ol.affiliations li::before {
+  content: counter(affiliation);
+  vertical-align: super;
+}
+
+.front-page .conference {
+  margin: 20px;
+  line-height: 1;
+  font-weight: 600;
+}
+
+.front-page .conference > .venue {
+  margin: 0;
+}
+
+.front-page .conference > .venue::before {
+  content: ""; /*"\1F3E2";*/
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background: url(assets/icons/venue.svg);
+  background-size: cover;
+  margin-right: 5px;
+}
+
+.front-page .conference > .date {
+  margin: 0;
+}
+
+.front-page .conference > .date::before {
+  content: ""; /*"\1F4C5";*/
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  background: url(assets/icons/date.svg);
+  background-size: cover;
+  margin-right: 5px;
+}
+
+/********************
+ * ANNOTATED FIGURES
+ ********************/
+
+.annotated-figure {
+  --rows: 3;
+  --cols: 3;
+  margin: 20px 0;
+  font-size: 11pt;
+  /*background: yellow;*/
+  display: inline-grid;
+  grid-template-columns: [init] repeat(var(--cols),1fr) [end];
+  grid-template-rows: [init] repeat(var(--rows),1fr) [end];
+}
+
+.annotated-figure img {
+  margin: 0;
+  max-width: none;
+  max-height: none;
+}
+
+.annotated-figure > .item {
+  --row: 1;
+  --col: 1;
+  --width: 1;
+  --height: 1;
+  --end-row: calc(var(--row) + var(--height));
+  --end-col: calc(var(--col) + var(--width));
+  grid-row: var(--row) / var(--end-row);
+  grid-column: var(--col) / var(--end-col);
+  z-index: 1;
+}
+
+.annotated-figure > .item.centered {
+  align-self: center;
+  justify-self: center;
+}
+
+.annotated-figure > .item.centered-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.annotated-figure > .item.annotation {
+  --opacity: 0.5;
+  background: rgba(0, 0, 0, var(--opacity));
+  z-index: 2;
+  color: white;
+}
+
+.annotated-figure > .item.highlight {
+  --color: #991a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: 3px solid var(--color);
+  color: var(--color);
+  z-index: 3;
+}
+
+
+
+/********************
+ * PSEUDOCODE
+ ********************/
+
+.algorithm {
+  --indent-width: 50px;
+  --line-number-width: 3ch;
+  --line-number-separation: 20px;
+  --padding: 5px;
+  --keyword-font-weight: bolder;
+  --keyword-font-family: inherit;
+  --keyword-font-style: inherit;
+  --the-algorithm: "Algorithm";
+  --algorithm-id: "1";
+  --algorithm-label: var(--the-algorithm) " " var(--algorithm-id);
+  text-align: left;
+  padding: var(--padding) 0 var(--padding) 0;
+  border-top: 2px solid black;
+  border-bottom: 1px solid black;
+  font-family: STIXGeneral, Roman, serif;
+  line-height: 1;
+  margin: 20px;
+}
+
+.algorithm p {
+  margin: 0;
+}
+
+.algorithm > p.caption:first-child {
+  margin: 0 0 var(--padding) 0;
+  padding-bottom: var(--padding);
+  border-bottom: 1px solid black;
+}
+
+.algorithm > p.caption:last-child {
+  text-align: center;
+  margin: var(--padding) 0 0 0;
+  padding-top: var(--padding);
+  border-top: 1px solid black;
+}
+
+.algorithm > p.caption::before {
+  content: var(--algorithm-label);
+  margin-right: 0.6em;
+  font-weight: bold;
+}
+
+.algorithm .function {
+  font-variant-caps: small-caps;
+}
+
+.algorithm em {
+  font-weight: var(--keyword-font-weight);
+  font-family: var(--keyword-font-family);
+  font-style: var(--keyword-font-style);
+}
+
+.algorithmic {
+  counter-reset: line_number;
+  padding-left: calc(var(--line-number-width) + var(--line-number-separation));
+}
+
+.algorithmic .nested-block {
+  padding-left: var(--indent-width);
+}
+
+.algorithmic .line {
+  counter-increment: line_number;
+}
+
+.algorithmic .line::before {
+  text-align: right;
+  width: var(--line-number-width);
+  display: inline-block;
+  content: counter(line_number) ":";
+}
+
+.algorithmic > .line::before {
+  margin-right: var(--line-number-separation);
+  margin-left: calc(-1 * var(--line-number-width) - var(--line-number-separation));
+}
+
+.algorithmic > .nested-block > .line::before {
+  margin-right: calc(var(--line-number-separation) + var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - var(--indent-width));
+}
+
+.algorithmic > .nested-block > .nested-block > .line::before {
+  margin-right: calc(var(--line-number-separation) + 2 * var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - 2 * var(--indent-width));
+}
+
+.algorithmic > .nested-block > .nested-block > .nested-block
+             > .line::before {
+  margin-right: calc(var(--line-number-separation) + 3 * var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - 3 * var(--indent-width));
+}
+
+.algorithmic > .nested-block > .nested-block > .nested-block
+             > .nested-block > .line::before {
+  margin-right: calc(var(--line-number-separation) + 4 * var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - 4 * var(--indent-width));
+}
+
+.algorithmic > .nested-block > .nested-block > .nested-block
+             > .nested-block > .nested-block > .line::before {
+  margin-right: calc(var(--line-number-separation) + 5 * var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - 5 * var(--indent-width));
+}
+
+.algorithmic > .nested-block > .nested-block > .nested-block
+             > .nested-block > .nested-block > .nested-block
+             > .line::before {
+  margin-right: calc(var(--line-number-separation) + 6 * var(--indent-width));
+  margin-left: calc(-1 * var(--line-number-width) -
+    var(--line-number-separation) - 6 * var(--indent-width));
+}
+
